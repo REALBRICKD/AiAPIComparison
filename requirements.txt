@@ -1,0 +1,5 @@
+pip
+requests
+openai
+google-genai
+types
