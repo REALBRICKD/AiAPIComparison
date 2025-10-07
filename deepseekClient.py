@@ -10,12 +10,19 @@ class DeepseekClient(GenAPI):
         super().__init__(API_KEY)
         self.client = OpenAI(api_key=API_KEY, base_url = "https://openrouter.ai/api/v1")
     
-    def respond(self, prompt):
-        # history = []
+    def respond(self, prompt): # i know i can do more inheritance here but honestly im lazy
+        messages = [{"role": "system", "content": prompt["parts"]}]
         while True:
-            print(prompt["parts"])
-            messages = [{"role": "user", "parts": prompt["parts"]}]
-            response = self.client.chat.completions.create(model = "deepseek/deepseek-chat-v3.1:free", messages = messages)
-            responseText = response.choices[0].message.content
-            print(responseText)
+            if prompt["parts"].lower() == "quit":
+                break                        
+            completion = self.client.chat.completions.create(
+                model="deepseek/deepseek-chat-v3.1:free",
+                messages=messages
+            )
+            reply = completion.choices[0].message.content
+            print(reply)
             print()
+            messages.append({"role": "assistant", "content":reply})
+            user_input = input()
+            prompt["parts"] = user_input
+            messages.append({"role": "user", "content": user_input})

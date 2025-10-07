@@ -12,10 +12,10 @@ class Main:
     APIList = []
     prompt = {}
     def __init__(self, prompt) -> None:
-        # gemini = GoogleGeminiClient() 
-        # self.APIList.append(gemini)
-        deepseek = DeepseekClient()
-        self.APIList.append(deepseek)
+        gemini = GoogleGeminiClient() 
+        self.APIList.append(gemini)
+        # deepseek = DeepseekClient()
+        # self.APIList.append(deepseek)
         # grok = GrokClient()
         # self.APIList.append(grok)
         self.prompt = prompt
@@ -24,5 +24,5 @@ class Main:
         testImplementation = TestImplementation(self.APIList, self.prompt)
         testImplementation.runTests(self.prompt)
 
-main = Main({"role": "user", "parts": "Can you give a short introduction of yourself?"})
+main = Main({"role": "user", "parts": "Can you briefly introduce yourself?"})
 main.run()

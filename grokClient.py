@@ -10,7 +10,7 @@ class GrokClient(GenAPI):
         super().__init__(API_KEY)
         self.client = OpenAI(api_key=API_KEY, base_url="https://openrouter.ai/api/v1")
     
-    def respond(self, prompt):
+    def respond(self, prompt): # i know i can do more inheritance here but honestly im lazy
         messages = [{"role": "system", "content": prompt["parts"]}]
         while True:
             if prompt["parts"].lower() == "quit":
