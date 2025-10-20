@@ -1,14 +1,9 @@
 class TestImplementation:
-    ApiList = []
-    prompt = {}
     def __init__(self, APIList, prompt):
         self.ApiList = APIList
         self.prompt = prompt
 
-    def runTests(self, prompt):
-        for i in self.ApiList:
-            self.chat(prompt)
-
-    def chat(self, prompt):
+    def runTests(self):
+        # Call each API with its own configured model
         for api in self.ApiList:
-            api.respond(prompt)
+            api.respond(self.prompt, api.model)

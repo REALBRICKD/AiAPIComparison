@@ -12,6 +12,7 @@
     <Name>AiAPIComparison</Name>
     <RootNamespace>AiAPIComparison</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,10 +23,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="genAPI.py" />
-    <Compile Include="deepseekClient.py" />
-    <Compile Include="googleGeminiClient.py" />
-    <Compile Include="grokClient.py" />
+    <Compile Include="openrouter_APIs\genAPI.py" />
+    <Compile Include="openrouter_APIs\deepseekClient.py" />
+    <Compile Include="google_APIs\googleGeminiClient.py" />
+    <Compile Include="openrouter_APIs\grokClient.py" />
     <Compile Include="Main.py" />
     <Compile Include="testImplementation.py" />
   </ItemGroup>
@@ -42,6 +43,10 @@
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
     </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="openrouter_APIs\" />
+    <Folder Include="google_APIs\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
