@@ -1,8 +1,12 @@
+import site
+site.addsitedir(site.getusersitepackages())
+
 #Imports
 from google_APIs.googleGeminiClient import GoogleGeminiClient
 from openrouter_APIs.deepseekClient import DeepseekClient
 from openrouter_APIs.grokClient import GrokClient
 from testImplementation import TestImplementation
+import dotenv
 from dotenv import load_dotenv
 import os
 

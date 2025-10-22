@@ -1,10 +1,6 @@
 #Imports
 import os
 import pip
-import requests
-
-from google import genai
-from google.genai import types
 
 #API Keys
 API_KEY = ""
