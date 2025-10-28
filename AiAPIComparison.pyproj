@@ -31,6 +31,7 @@
     <Compile Include="testImplementation.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="prompts.txt" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>

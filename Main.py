@@ -1,4 +1,6 @@
 import site
+
+from pydantic.type_adapter import P
 site.addsitedir(site.getusersitepackages())
 
 #Imports
@@ -14,23 +16,41 @@ load_dotenv() # Load variables from .env file
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
-# Executes requests to APIs
+# Initializes API and prompt list, runs tests
 class Main:
+    prompts = []
     APIList = []
-    prompt = {}
-    def __init__(self, prompt) -> None:
+    def __init__(self, prompts) -> None:
+        self.prompts = prompts
         gemini = GoogleGeminiClient(GEMINI_API_KEY, "gemini-2.5-pro") 
         self.APIList.append(gemini)
-        deepseek = DeepseekClient(OPENROUTER_API_KEY, "deepseek/deepseek-chat-v3.1:free")
+        deepseek = DeepseekClient(OPENROUTER_API_KEY, "deepseek/deepseek-chat-v3.1")
         self.APIList.append(deepseek)
         grok = GrokClient(OPENROUTER_API_KEY, "x-ai/grok-4-fast")
         self.APIList.append(grok)
-        self.prompt = prompt
 
     def run(self):
-        testImplementation = TestImplementation(self.APIList, self.prompt)
+        testImplementation = TestImplementation(self.APIList, self.prompts)
         testImplementation.runTests()
 
+# Read prompts from file, separated by blank lines. Saves them as a list of dictionaries.
+def initPrompts(path="prompts.txt"):
+    prompts = []
+    buf_lines = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                buf_lines.append(line)
+            else:
+                if buf_lines:
+                    content = "".join(buf_lines).replace("\n", "")
+                    prompts.append({"role": "user", "parts": content})
+                    buf_lines = []
+        if buf_lines:
+            content = "".join(buf_lines).replace("\n", "")
+            prompts.append({"role": "user", "parts": content})
+    return prompts
+
 if __name__ == "__main__":
-    main = Main({"role": "user", "parts": "Can you briefly introduce yourself?"})
+    main = Main(initPrompts())
     main.run()

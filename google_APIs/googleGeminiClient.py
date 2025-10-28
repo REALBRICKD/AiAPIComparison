@@ -11,6 +11,7 @@ class GoogleGeminiClient():
         self.client = genai.Client(api_key=apikey)
         self.chat = self.client.chats.create(model = self.model)
     
+    # Hold continuous conversation with user
     def respond(self, prompt, model=None):
         while True:
             response = self.chat.send_message(prompt["parts"])
@@ -20,3 +21,9 @@ class GoogleGeminiClient():
             print()
             user_input = input()
             prompt = {"role": "user", "parts": user_input} # get new prompt
+
+    # Single response without continuous conversation
+    def respond_single(self, prompt):
+        response = self.chat.send_message(prompt["parts"])
+        print(prompt["parts"])
+        print(response.text)

@@ -1,11 +1,8 @@
-#Imports
-import os
-import pip
-
 #API Keys
 API_KEY = ""
+import logging 
 
-# General API superclass
+# General API superclass meant for all openrouter APIs.
 class GenAPI:
     key = ""
     headers = None
@@ -13,7 +10,7 @@ class GenAPI:
     prompt = ""
     history = []
     model = ""
-
+    # Authenticate key
     def __init__(self, API_KEY, model):
         self.key = API_KEY
         headers = {
@@ -22,7 +19,7 @@ class GenAPI:
         }
         self.model = model
         self.headers = headers
-
+    # Hold continuous conversation with user
     def respond(self, prompt, model):
         messages = [{"role": "system", "content": prompt["parts"]}]
         while True:
@@ -40,3 +37,15 @@ class GenAPI:
             prompt["parts"] = user_input
             messages.append({"role": "user", "content": user_input})
         messages = [{"role": "system", "content": prompt["parts"]}]
+    # Single response without continuous conversation
+    def respond_single(self, prompt):
+        message = [{"role": "system", "content": prompt["parts"]}]
+        response = self.client.chat.completions.create(model=self.model, messages = message)
+        print(prompt["parts"])
+        try:
+            response = self.client.chat.completions.create(model=self.model, messages=message)
+            print(response.choices[0].message.content)
+        except Exception as e:
+            logging.exception("Completion request failed; capture raw response for debugging.")
+            raise
+        print(response.choices[0].message.content)
