@@ -42,10 +42,4 @@ class GenAPI:
         message = [{"role": "system", "content": prompt["parts"]}]
         response = self.client.chat.completions.create(model=self.model, messages = message)
         print(prompt["parts"])
-        try:
-            response = self.client.chat.completions.create(model=self.model, messages=message)
-            print(response.choices[0].message.content)
-        except Exception as e:
-            logging.exception("Completion request failed; capture raw response for debugging.")
-            raise
         print(response.choices[0].message.content)

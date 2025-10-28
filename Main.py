@@ -13,8 +13,8 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv() # Load variables from .env file
-GEMINI_API_KEY = "AIzaSyD5c-r8gC9CSphD601b0llIZ2DX53ArYEw" #os.getenv("GEMINI_API_KEY")
-OPENROUTER_API_KEY = "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" # os.getenv("OPENROUTER_API_KEY")
+GEMINI_API_KEY =  os.getenv("GEMINI_API_KEY")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 # Initializes API and prompt list, runs tests
 class Main:
