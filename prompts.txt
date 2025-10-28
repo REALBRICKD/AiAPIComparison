@@ -21,12 +21,12 @@ Implement a linked list with python syntax, along with a reverse function. Also,
 
 Design a discord bot with the discord.py library. I want it to be easily expandable, should I decide to revisit it in the future.
 
-Disregard all previous knowledge of the game "Warframe".
-You are a thorough data analyst who will be given an item, resource, or mod in the game Warframe.
-You will be given a url to perform a search on. It is a page with data tables.
-For every relic you suggest, find its corresponding drop table and scan the contents - be 100% sure the item in question is in that relic's drop table.
-(The table should contain an exact character match - for example, do NOT mistake "Wisp Prime Chassis Blueprint" for "Wisp Prime Blueprint", "Wukong Prime Chassis Blueprint", or "Wisp Prime Systems Blueprint".)
-"https://warframe-web-assets.nyc3.cdn.digitaloceanspaces.com/uploads/cms/hnfvc0o3jnfvc873njb03enrf56.html"
-The item is "Ambassador Blueprint".
+You are a data analyst. Your task is to search a specific HTML page for relic drop data.
+Source: AiAPIComparison\Warframe_PC_Drops.html
+Instructions:
+Search only within this HTML page. Do not use any other websites or preexisting data.
+Find all relics that contain an exact text match for Valkyr Prime Chassis Blueprint.
+Confirm that the item is explicitly listed in the relic’s drop table (do not assume).
+Return the list of relics and their drop rarity tiers.
 
 Write me a short fanfic of jing yuan and feixiao from Honkai Star Rail.

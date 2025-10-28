@@ -37,18 +37,19 @@ class Main:
 def initPrompts(path="prompts.txt"):
     prompts = []
     buf_lines = []
-    with open(path, "r", encoding="utf-8") as f:
-        for line in f:
-            if line.strip():
+    f = open("prompts.txt")
+    # with open(path, "r", encoding="utf-8") as f:
+    for line in f:
+        if line.strip():
                 buf_lines.append(line)
-            else:
-                if buf_lines:
-                    content = "".join(buf_lines).replace("\n", "")
-                    prompts.append({"role": "user", "parts": content})
-                    buf_lines = []
-        if buf_lines:
-            content = "".join(buf_lines).replace("\n", "")
-            prompts.append({"role": "user", "parts": content})
+        else:
+            if buf_lines:
+                content = "".join(buf_lines).replace("\n", "")
+                prompts.append({"role": "user", "parts": content})
+                buf_lines = []
+    if buf_lines:
+        content = "".join(buf_lines).replace("\n", "")
+        prompts.append({"role": "user", "parts": content})
     return prompts
 
 if __name__ == "__main__":
