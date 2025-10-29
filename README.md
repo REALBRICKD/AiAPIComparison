@@ -16,8 +16,7 @@ This project is not designed to be run in its current state, though assuming you
 * Create a .env file
 * Within that .env file, insert:
   * > GEMINI_API_KEY = "Your key here"
-    <br>
-    > OPENROUTER_API_KEY = "Your key here"
+  * > OPENROUTER_API_KEY = "Your key here"
 * Once authenticated, the program should run all the prompts through all the included APIs.
 
 # Roadmap
