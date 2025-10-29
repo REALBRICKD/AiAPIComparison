@@ -1,7 +1,7 @@
 # AI API Comparison
 This project is intended to act as a framework for evaluating the quality of AI-powered API's, with simple code designed to automate such a task written in python. \
 A full writeup document with more detail (including evaluaiton criteria) is included in this repository as well. \
-The findings will be incorporated into [my discord bot](https://github.com/REALBRICKD/discord-gemini-bot), though the findings can easily be applied elsewhere. \
+The findings will be incorporated into [my discord bot](https://github.com/REALBRICKD/discord-gemini-bot). For example, if I find an AI that excels at data analysis or code writing, I will use its respective API as a command to ensure optimal performance.  \
 When run, the program adds every API to be tested to a list, and has them respond to the list of prompts found in prompts.txt. Additional methods for continuous conversation have also been programmed. 
 
 # Production and Design
