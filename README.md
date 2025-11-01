@@ -11,13 +11,14 @@ A separate helper has been made for Google Gemini, as it has a separate key and 
 A range of example prompts can be found in prompts.txt. 
 
 # Running the program
-This project is not designed to be run in its current state, though assuming you have an openrouter key and a Google Gemini key...\
+This project is not designed to be run in its current state, though assuming you have an openrouter key and a Google Gemini key...
 * Clone the repo as normal.
 * Create a .env file
 * Within that .env file, insert:
   * > GEMINI_API_KEY = "Your key here"
   * > OPENROUTER_API_KEY = "Your key here"
 * Once authenticated, the program should run all the prompts through all the included APIs.
+* Should you wish to hold continuous conversation with each API, that functionality has been implemented, but not enabled by default.
 
 # Roadmap
 The design of this project allows easy addition of more APIs and prompts, with the ability to hold continuous conversation or responding to a list of prompts. I plan to test more APIs such as OpenAI's ChatGPT and Anthropic's Claude. \
